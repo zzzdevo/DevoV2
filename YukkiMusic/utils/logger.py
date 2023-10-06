@@ -1,31 +1,40 @@
-
 #
+# Copyright (C) 2021-2022 by TeamYukki@Github, < https://github.com/TeamYukki >.
+#
+# This file is part of < https://github.com/TeamYukki/YukkiMusicBot > project,
+# and is released under the "GNU v3.0 License Agreement".
+# Please see < https://github.com/TeamYukki/YukkiMusicBot/blob/master/LICENSE >
+#
+# All rights reserved.
 
-from config import LOG_GROUP_ID, MUSIC_BOT_NAME
+from config import LOG, LOG_GROUP_ID
 from YukkiMusic import app
 from YukkiMusic.utils.database import is_on_off
 
 
 async def play_logs(message, streamtype):
-    if await is_on_off(2):
+    if await is_on_off(LOG):
+        if message.chat.username:
+            chatusername = f"@{message.chat.username}"
+        else:
+            chatusername = "Private Group"
         logger_text = f"""
-<b>{MUSIC_BOT_NAME} ئاماری پەخشکردن</b>
+**YUKKI PLAY LOG**
 
-<b>ئایدی گرووپ :</b> <code>{message.chat.id}</code>
-<b>ناوی گرووپ :</b> {message.chat.title}
-<b>یوزەری گرووپ :</b> @{message.chat.username}
+**Chat:** {message.chat.title} [`{message.chat.id}`]
+**User:** {message.from_user.mention}
+**Username:** @{message.from_user.username}
+**User ID:** `{message.from_user.id}`
+**Chat Link:** {chatusername}
 
-<b>ئایدی بەکارهێنەر :</b> <code>{message.from_user.id}</code>
-<b>ناوی :</b> {message.from_user.mention}
-<b>یوزەری :</b> @{message.from_user.username}
+**Query:** {message.text}
 
-<b>ڕیزکراو :</b> {message.text.split(None, 1)[1]}
-<b>جۆری پەخشکردن :</b> {streamtype}"""
+**StreamType:** {streamtype}"""
         if message.chat.id != LOG_GROUP_ID:
             try:
                 await app.send_message(
-                    chat_id=LOG_GROUP_ID,
-                    text=logger_text,
+                    LOG_GROUP_ID,
+                    f"{logger_text}",
                     disable_web_page_preview=True,
                 )
             except:
