@@ -9,6 +9,7 @@ heroku3
 lyricsgenius
 motor
 ntgcalls
+numpy
 pillow
 psutil
 pykeyboard
@@ -23,3 +24,4 @@ tgcrypto
 youtube-search
 youtube-search-python
 yt-dlp
+telegraph
