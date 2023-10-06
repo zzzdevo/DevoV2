@@ -1,12 +1,11 @@
 #
-# Copyright (C) 2021-present by TeamYukki@Github, < https://github.com/TeamYukki >.
+# Copyright (C) 2021-2022 by TeamYukki@Github, < https://github.com/TeamYukki >.
 #
 # This file is part of < https://github.com/TeamYukki/YukkiMusicBot > project,
 # and is released under the "GNU v3.0 License Agreement".
 # Please see < https://github.com/TeamYukki/YukkiMusicBot/blob/master/LICENSE >
 #
 # All rights reserved.
-#
 
 import asyncio
 import speedtest
@@ -23,13 +22,13 @@ def testspeed(m):
     try:
         test = speedtest.Speedtest()
         test.get_best_server()
-        m = m.edit("Running Download SpeedTest")
+        m = m.edit("**ᯓ تاقیکردنەوەی خێرایی دابەزاندن...**")
         test.download()
-        m = m.edit("Running Upload SpeedTest")
+        m = m.edit("**ᯓ بارکردنی تاقیکردنەوەی خێرایی... **")
         test.upload()
         test.results.share()
         result = test.results.dict()
-        m = m.edit("Sharing SpeedTest Results")
+        m = m.edit("**ᯓ ئەنجامی تاقیکردنەوەی خێرایی هاوبەش بکە...**")
     except Exception as e:
         return m.edit(e)
     return result
@@ -37,24 +36,20 @@ def testspeed(m):
 
 @app.on_message(filters.command(SPEEDTEST_COMMAND) & SUDOERS)
 async def speedtest_function(client, message):
-    m = await message.reply_text("Running Speed test")
-    loop = asyncio.get_event_loop_policy().get_event_loop()
+    m = await message.reply_text("**•⎆┊تاقیکردنەوەی خێرایی ئەنجام بدە...**")
+    loop = asyncio.get_event_loop()
     result = await loop.run_in_executor(None, testspeed, m)
-    output = f"""**Speedtest Results**
-    
-<u>**Client:**</u>
-**__ISP:__** {result['client']['isp']}
-**__Country:__** {result['client']['country']}
-  
-<u>**Server:**</u>
-**__Name:__** {result['server']['name']}
-**__Country:__** {result['server']['country']}, {result['server']['cc']}
-**__Sponsor:__** {result['server']['sponsor']}
-**__Latency:__** {result['server']['latency']}  
-**__Ping:__** {result['ping']}"""
+    output = f"""**[ᯓ 𝗦𝗢𝗨𝗥𝗖𝞝 𝙄𝙌 - فەرمانی خێرایی🧑🏻‍💻🖤](t.me/MGIMT)•\n••┉┉┉┉┉┉┉••🝢••┉┉┉┉┉┉┉••\n**
+**•⎆┊کڕیار :**
+**•⎆┊ئای سیپی :** {result['client']['isp']}
+**•⎆┊وڵات :** {result['client']['country']} 
+**•⎆┊سێرڤەر :**
+**•⎆┊ناو :** {result['server']['name']}
+**•⎆┊وڵات :** {result['server']['country']}, {result['server']['cc']}
+**•⎆┊سپۆنسەر :** {result['server']['sponsor']}
+**•⎆┊دواکەوتن :** {result['server']['latency']}  
+**•⎆┊پینگ :** {result['ping']}"""
     msg = await app.send_photo(
-        chat_id=message.chat.id, 
-        photo=result["share"], 
-        caption=output
+        chat_id=message.chat.id, photo=result["share"], caption=output
     )
     await m.delete()
