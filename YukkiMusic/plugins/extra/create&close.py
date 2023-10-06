@@ -7,10 +7,10 @@ from strings.filters import command
 from pyrogram.raw.functions.channels import GetFullChannel
 from pyrogram.raw.functions.messages import GetFullChat
 from pyrogram.raw.types import InputGroupCall, InputPeerChannel, InputPeerChat
-from AnonX.utils.database import *
+from YukkiMusic.utils.database import *
 from pyrogram.raw.functions.phone import CreateGroupCall, DiscardGroupCall
 from pyrogram.errors import UserAlreadyParticipant, UserNotParticipant, ChatAdminRequired
-from AnonX import app , Userbot
+from YukkiMusic import app , Userbot
 
 async def get_group_call(
     client: Client, message: Message, err_msg: str = ""
