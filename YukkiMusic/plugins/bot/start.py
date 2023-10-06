@@ -1,17 +1,6 @@
-#
-# Copyright (C) 2021-present by TeamYukki@Github, < https://github.com/TeamYukki >.
-#
-# This file is part of < https://github.com/TeamYukki/YukkiMusicBot > project,
-# and is released under the "GNU v3.0 License Agreement".
-# Please see < https://github.com/TeamYukki/YukkiMusicBot/blob/master/LICENSE >
-#
-# All rights reserved.
-#
-
 import asyncio
 
 from pyrogram import filters
-from pyrogram.enums import ChatType, ParseMode
 from pyrogram.types import (InlineKeyboardButton,
                             InlineKeyboardMarkup, Message)
 from youtubesearchpython.__future__ import VideosSearch
@@ -40,6 +29,7 @@ loop = asyncio.get_running_loop()
 @app.on_message(
     filters.command(get_command("START_COMMAND"))
     & filters.private
+    
     & ~BANNED_USERS
 )
 @LanguageStart
@@ -49,8 +39,9 @@ async def start_comm(client, message: Message, _):
         name = message.text.split(None, 1)[1]
         if name[0:4] == "help":
             keyboard = help_pannel(_)
-            return await message.reply_text(
-                _["help_1"], reply_markup=keyboard
+            return await message.reply_photo(
+              photo=config.START_IMG_URL,
+              caption=_["help_1"], reply_markup=keyboard
             )
         if name[0:4] == "song":
             return await message.reply_text(_["song_2"])
@@ -132,7 +123,7 @@ async def start_comm(client, message: Message, _):
         if name[0:3] == "del":
             await del_plist_msg(client=client, message=message, _=_)
         if name[0:3] == "inf":
-            m = await message.reply_text("🔎 Fetching Info!")
+            m = await message.reply_text("👾")
             query = (str(name)).replace("info_", "", 1)
             query = f"https://www.youtube.com/watch?v={query}"
             results = VideosSearch(query, limit=1)
@@ -147,27 +138,26 @@ async def start_comm(client, message: Message, _):
                 channel = result["channel"]["name"]
                 link = result["link"]
                 published = result["publishedTime"]
-            searched_text = f"""
-🔍__**Video Track Information**__
+            searched_text = f"""**
+•⎆┊[ᯓ زانیاریەکانی تڕاك🧑🏻‍💻🖤](t.me/MGIMT)
 
-❇️**Title:** {title}
+👾 ناونیشان : {title}
 
-⏳**Duration:** {duration} Mins
-👀**Views:** `{views}`
-⏰**Published Time:** {published}
-🎥**Channel Name:** {channel}
-📎**Channel Link:** [Visit From Here]({channellink})
-🔗**Video Link:** [Link]({link})
+⏳ ماوە : {duration} خولەك 
+👀 بینینەکان : `{views}` 
+🪐 بڵاوکراوەتەوە لە : {published} 
+🔗 لینك : [لە یوتوب سەیری بکەن] ({link}) 
+🎥 که‌ناڵ : [{channel}]({channellink})
 
-⚡️ __Searched Powered By {config.MUSIC_BOT_NAME}__"""
+🕷️ گەڕانی بەهێز لەلایەن {config.MUSIC_BOT_NAME}__ **"""
             key = InlineKeyboardMarkup(
                 [
                     [
                         InlineKeyboardButton(
-                            text="🎥 Watch ", url=f"{link}"
-                        ),
+                            text="🎥 یوتوب ", url=f"{link}"),
+                  ],[
                         InlineKeyboardButton(
-                            text="🔄 Close", callback_data="close"
+                            text="کەناڵی بۆت", url="https://t.me/MGIMT"
                         ),
                     ],
                 ]
@@ -177,7 +167,7 @@ async def start_comm(client, message: Message, _):
                 message.chat.id,
                 photo=thumbnail,
                 caption=searched_text,
-                parse_mode=ParseMode.MARKDOWN,
+                parse_mode="markdown",
                 reply_markup=key,
             )
             if await is_on_off(config.LOG):
@@ -225,13 +215,15 @@ async def start_comm(client, message: Message, _):
 @app.on_message(
     filters.command(get_command("START_COMMAND"))
     & filters.group
+    
     & ~BANNED_USERS
 )
 @LanguageStart
 async def testbot(client, message: Message, _):
     out = start_pannel(_)
-    return await message.reply_text(
-        _["start_1"].format(
+    return await message.reply_photo(
+      photo=config.START_IMG_URL,
+      caption=_["start_1"].format(
             message.chat.title, config.MUSIC_BOT_NAME
         ),
         reply_markup=InlineKeyboardMarkup(out),
@@ -258,7 +250,7 @@ async def welcome(client, message: Message):
             _ = get_string(language)
             if member.id == app.id:
                 chat_type = message.chat.type
-                if chat_type != ChatType.SUPERGROUP:
+                if chat_type != "supergroup":
                     await message.reply_text(_["start_6"])
                     return await app.leave_chat(message.chat.id)
                 if chat_id in await blacklisted_chats():
