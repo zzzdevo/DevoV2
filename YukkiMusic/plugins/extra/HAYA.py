@@ -20,7 +20,7 @@ from random import  choice, randint
 async def huhh(client: Client, message: Message):
     await message.reply_photo(
         photo=f"https://graph.org/file/b4ace5c5aec2901efed59.jpg",
-        caption=f"""**[ᯓ 𝗦𝗢𝗨𝗥𝗖𝞝 𝙄𝙌 - 🧑🏻‍💻🖤 گەشەپێدەران](t.me/MGIMT)**\n••┉┉┉┉┉••🝢••┉┉┉┉┉••\n**بەخێربێی ئەزیزم{message.from_user.mention} بۆ بەشی گەشەپێدەرانی بۆت🕷️•**\n**بۆ هەبوونی هەرکێشە و پرسیارێك پەیوەندی بە گەشەپێدەر بکە لەڕێگای دووگمەکانی خوارەوە♥•**""",
+        caption=f"""**[⧉• 𝙎𝙊𝙐𝙍𝘾𝞝 𝙄𝙌 - 🧑🏻‍💻🖤 گەشەپێدەران](t.me/MGIMT)**\n••┉┉┉┉┉••🝢••┉┉┉┉┉••\n**بەخێربێی ئەزیزم{message.from_user.mention} بۆ بەشی گەشەپێدەرانی بۆت🕷️•**\n**بۆ هەبوونی هەرکێشە و پرسیارێك پەیوەندی بە گەشەپێدەر بکە لەڕێگای دووگمەکانی خوارەوە♥•**""",
         reply_markup=InlineKeyboardMarkup(
             [
                 [
@@ -66,7 +66,7 @@ async def yas(client, message):
     usr = await client.get_chat("VTVIT")
     name = usr.first_name
     photo = await app.download_media(usr.photo.big_file_id)
-    await message.reply_photo(photo,       caption=f"**[ᯓ 𝙎𝙊𝙐𝙍𝘾𝞝 𝙄𝙌 - سەرچاوەی زیرەك 🧑🏻‍💻](t.me/MGIMT)**\n**زانیاری گەشەپێدەری دووەمی بۆت**\n↜︙Dev 𝐍𝐀𝐌𝐄 ↬:{name}\n↜︙Dev 𝐔𝐒𝐄𝐑 ↬ :@{usr.username}\n↜︙Dev 𝐈𝐃 ↬ :{usr.id}\n↜︙Dev 𝐁𝐈𝐎 ↬: {usr.bio}",
+    await message.reply_photo(photo,       caption=f"**[⧉• 𝙎𝙊𝙐𝙍𝘾𝞝 𝙄𝙌 - سەرچاوەی زیرەك 🧑🏻‍💻](t.me/MGIMT)\nزانیاری گەشەپێدەری دووەمی بۆت\n↜︙𝐍𝐀𝐌𝐄 ↬:{name}\n↜︙𝐔𝐒𝐄𝐑 ↬ :@{usr.username}\n↜︙𝐈𝐃 ↬ :{usr.id}\n↜︙𝐁𝐈𝐎 ↬: {usr.bio}**",
     reply_markup=InlineKeyboardMarkup(
             [
                 [
@@ -86,7 +86,7 @@ async def yas(client, message):
     usr = await client.get_chat("IQ7amo")
     name = usr.first_name
     photo = await app.download_media(usr.photo.big_file_id)
-    await message.reply_photo(photo,       caption=f"**[ᯓ 𝙎𝙊𝙐𝙍𝘾𝞝 𝙄𝙌 - سەرچاوەی زیرەك 🧑🏻‍💻](t.me/MGIMT)**\n**زانیاری پڕۆگرامسازی سەرچاوە**\n↜︙Dev 𝐍𝐀𝐌𝐄 ↬:{name}\n↜︙Dev 𝐔𝐒𝐄𝐑 ↬ :@{usr.username}\n↜︙Dev 𝐈𝐃 ↬ :{usr.id}\n↜︙Dev 𝐁𝐈𝐎 ↬: {usr.bio}", 
+    await message.reply_photo(photo,       caption=f"**[⧉• 𝙎𝙊𝙐𝙍𝘾𝞝 𝙄𝙌 - 🧑🏻‍💻🖤 پڕۆگرامساز](t.me/MGIMT)\nزانیاری پڕۆگرامسازی سەرچاوە\n↜︙𝐍𝐀𝐌𝐄 ↬:{name}\n↜︙𝐔𝐒𝐄𝐑 ↬ :@{usr.username}\n↜︙𝐈𝐃 ↬ :{usr.id}\n↜︙𝐁𝐈𝐎 ↬: {usr.bio}**", 
     reply_markup=InlineKeyboardMarkup(
             [
                 [
@@ -109,7 +109,7 @@ async def yas(client, message):
     usr = await client.get_chat(USER_OWNER)
     name = usr.first_name
     photo = await app.download_media(usr.photo.big_file_id)
-    await message.reply_photo(photo,       caption=f"**[ᯓ 𝙎𝙊𝙐𝙍𝘾𝞝 𝙄𝙌 - سەرچاوەی زیرەك 🧑🏻‍💻](t.me/MGIMT)**\n**زانیاری خاوەنی بۆت**\n↜︙Dev 𝐍𝐀𝐌𝐄 ↬:{name}\n↜︙Dev 𝐔𝐒𝐄𝐑 ↬ :@{usr.username}\n↜︙Dev 𝐈𝐃 ↬ :{usr.id}\n↜︙Dev 𝐁𝐈𝐎 ↬: {usr.bio} ",
+    await message.reply_photo(photo,       caption=f"**[⧉• 𝙎𝙊𝙐𝙍𝘾𝞝 𝙄𝙌 - 🧑🏻‍💻🖤 خاوەنی بۆت](t.me/MGIMT)\nزانیاری خاوەنی بۆت\n↜︙𝐍𝐀𝐌𝐄 ↬:{name}\n↜︙𝐔𝐒𝐄𝐑 ↬ :@{usr.username}\n↜︙𝐈𝐃 ↬ :{usr.id}\n↜︙𝐁𝐈𝐎 ↬: {usr.bio}**",
     reply_markup=InlineKeyboardMarkup(
             [
                 [
