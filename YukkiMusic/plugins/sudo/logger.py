@@ -29,10 +29,10 @@ async def logger(client, message, _):
         return await message.reply_text(usage)
     state = message.text.split(None, 1)[1].strip()
     state = state.lower()
-    if state == "enable":
+    if state == "چالاک":
         await add_on(config.LOG)
         await message.reply_text(_["log_2"])
-    elif state == "disable":
+    elif state == "ناچالاک":
         await add_off(config.LOG)
         await message.reply_text(_["log_3"])
     else:
