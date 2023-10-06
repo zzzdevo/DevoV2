@@ -15,22 +15,19 @@ from YukkiMusic.utils.database import is_on_off
 
 async def play_logs(message, streamtype):
     if await is_on_off(LOG):
-        if message.chat.username:
-            chatusername = f"@{message.chat.username}"
-        else:
-            chatusername = "Private Group"
-        logger_text = f"""
-**{MUSIC_BOT_NAME} Play Log**
+         logger_text = f"""
+<b>{MUSIC_BOT_NAME} ئاماری پەخشکردن</b>
 
-**Chat:** {message.chat.title} [`{message.chat.id}`]
-**User:** {message.from_user.mention}
-**Username:** @{message.from_user.username}
-**User ID:** `{message.from_user.id}`
-**Chat Link:** {chatusername}
+<b>ئایدی گرووپ :</b> <code>{message.chat.id}</code>
+<b>ناوی گرووپ :</b> {message.chat.title}
+<b>یوزەری گرووپ :</b> @{message.chat.username}
 
-**Query:** {message.text}
+<b>ئایدی بەکارهێنەر :</b> <code>{message.from_user.id}</code>
+<b>ناوی :</b> {message.from_user.mention}
+<b>یوزەری :</b> @{message.from_user.username}
 
-**StreamType:** {streamtype}"""
+<b>ڕیزکراو :</b> {message.text.split(None, 1)[1]}
+<b>جۆری پەخشکردن :</b> {streamtype}"""
         if message.chat.id != LOG_GROUP_ID:
             try:
                 await app.send_message(
