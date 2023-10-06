@@ -1,5 +1,5 @@
 from pyrogram import Client, filters, idle
-from AnonX import app
+from YukkiMusic import app
 
 from pyrogram import filters
 from pyrogram import Client
