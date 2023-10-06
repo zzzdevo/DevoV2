@@ -3,7 +3,7 @@ from pyrogram.types import Message
 from telegraph import upload_file
 import os
 from strings.filters import command
-from AnonX import app
+from YukkiMusic import app
 
 @app.on_message(command(["تێلەگراف","telegraph"]))
 async def get_link_group(client, message):
