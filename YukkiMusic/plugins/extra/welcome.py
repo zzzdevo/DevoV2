@@ -3,7 +3,7 @@ from pyrogram.types import ChatMemberUpdated
 from pyrogram import Client, filters, types
 from datetime import datetime
 from pyrogram.types import InlineKeyboardMarkup, InlineKeyboardButton, Message
-from AnonX import app
+from YukkiMusic import app
 
 # Welcoem message
 WELCOME_MESSAGE = """** ↫ بەخێربێیت ئەزیزم بۆ گرووپ♥️•**\n
@@ -15,14 +15,6 @@ WELCOME_MESSAGE = """** ↫ بەخێربێیت ئەزیزم بۆ گرووپ♥�
 
 
 """
-
-
-# On /start From Private
-@app.on_message(filters.regex('/jstart') & filters.private)
-async def ON_START(_, Message: types.Message):
-    chat_id, message_id, user_id = Message.chat.id, Message.id, Message.from_user.id
-    await app.send_message(text='Welcome To Group Security Bot .', chat_id=chat.id)
-
 
 # On Join Group member .
 @app.on_chat_member_updated(filters.group)
