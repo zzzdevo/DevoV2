@@ -132,7 +132,7 @@ async def start_comm(client, message: Message, _):
         if name[0:3] == "del":
             await del_plist_msg(client=client, message=message, _=_)
         if name[0:3] == "inf":
-            m = await message.reply_text("🔎 Fetching Info!")
+            m = await message.reply_text("👾")
             query = (str(name)).replace("info_", "", 1)
             query = f"https://www.youtube.com/watch?v={query}"
             results = VideosSearch(query, limit=1)
@@ -147,27 +147,23 @@ async def start_comm(client, message: Message, _):
                 channel = result["channel"]["name"]
                 link = result["link"]
                 published = result["publishedTime"]
-            searched_text = f"""
-🔍__**Video Track Information**__
-
-❇️**Title:** {title}
-
-⏳**Duration:** {duration} Mins
-👀**Views:** `{views}`
-⏰**Published Time:** {published}
-🎥**Channel Name:** {channel}
-📎**Channel Link:** [Visit From Here]({channellink})
-🔗**Video Link:** [Link]({link})
-
-⚡️ __Searched Powered By {config.MUSIC_BOT_NAME}__"""
+            searched_text = f"""**
+•⎆┊[ᯓ زانیاریەکانی تڕاك🧑🏻‍💻🖤](t.me/MGIMT)
+👾 ناونیشان : {title}
+⏳ ماوە : {duration} خولەك 
+👀 بینینەکان : `{views}` 
+🪐 بڵاوکراوەتەوە لە : {published} 
+🔗 لینك : [لە یوتوب سەیری بکەن] ({link}) 
+🎥 که‌ناڵ : [{channel}]({channellink})
+🕷️ گەڕانی بەهێز لەلایەن {config.MUSIC_BOT_NAME}__ **"""
             key = InlineKeyboardMarkup(
                 [
                     [
                         InlineKeyboardButton(
-                            text="🎥 Watch ", url=f"{link}"
-                        ),
+                            text="🎥 یوتوب ", url=f"{link}"),
+                  ],[
                         InlineKeyboardButton(
-                            text="🔄 Close", callback_data="close"
+                            text="کەناڵی بۆت", url="https://t.me/MGIMT"
                         ),
                     ],
                 ]
@@ -270,8 +266,9 @@ async def welcome(client, message: Message):
                     return await app.leave_chat(chat_id)
                 userbot = await get_assistant(message.chat.id)
                 out = start_pannel(_)
-                await message.reply_text(
-                    _["start_3"].format(
+                await message.reply_photo(
+                        photo=config.START_IMG_URL,
+                        caption=_["start_3"].format(
                         config.MUSIC_BOT_NAME,
                         userbot.username,
                         userbot.id,
