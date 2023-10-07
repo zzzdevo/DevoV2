@@ -21,7 +21,7 @@ async def play_logs(message, streamtype):
         logger_text = f"""
 **ئاماری پەخشکردن: [𝙄𝙌 𝙈𝙐𝙎𝙄𝘾 ♥️•](t.me/mgimt)**
 
-**وی گرووپ:** {message.chat.title} [`{message.chat.id}`]
+**ناوی گرووپ:** {message.chat.title} [`{message.chat.id}`]
 **ناوی:** {message.from_user.mention}
 **یوزەری:** @{message.from_user.username}
 **ئایدی بەکار‌هێنەر:** `{message.from_user.id}`
