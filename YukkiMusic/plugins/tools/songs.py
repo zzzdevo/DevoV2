@@ -18,7 +18,7 @@ from pyrogram.enums import ChatAction
 from pyrogram.types import (InlineKeyboardButton,
                             InlineKeyboardMarkup, InputMediaAudio,
                             InputMediaVideo, Message)
-
+from strings.filters import command
 from config import (BANNED_USERS, SONG_DOWNLOAD_DURATION,
                     SONG_DOWNLOAD_DURATION_LIMIT)
 from strings import get_command
@@ -32,7 +32,7 @@ SONG_COMMAND = get_command("SONG_COMMAND")
 
 
 @app.on_message(
-    filters.command(SONG_COMMAND)
+    command(SONG_COMMAND)
     & filters.group
     & ~BANNED_USERS
 )
