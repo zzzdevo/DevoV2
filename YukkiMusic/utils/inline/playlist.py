@@ -7,7 +7,7 @@
 #
 # All rights reserved.
 #
-
+import config
 from pyrogram.types import InlineKeyboardButton, InlineKeyboardMarkup
 
 
@@ -15,17 +15,14 @@ def botplaylist_markup(_):
     buttons = [
         [
             InlineKeyboardButton(
-                text=_["PL_B_1"],
-                callback_data="get_playlist_playmode",
+                text=_["ST_B_27"],
+                url=f"{SUPPORT_GROUP}"
             ),
             InlineKeyboardButton(
-                text=_["PL_B_8"], callback_data="get_top_playlists"
+                text=_["ST_B_28"], url=f"{SUPPORT_CHANNEL}"
             ),
         ],
         [
-            InlineKeyboardButton(
-                text=_["PL_B_4"], callback_data="PM"
-            ),
             InlineKeyboardButton(
                 text=_["CLOSE_BUTTON"], callback_data="close"
             ),
