@@ -15,7 +15,7 @@ from pyrogram import filters
 from pyrogram.enums import ChatMembersFilter
 from pyrogram.errors import FloodWait
 from pyrogram.raw import types
-
+from strings.filters import command
 import config
 from config import adminlist, chatstats, clean, userstats
 from strings import get_command
@@ -68,7 +68,7 @@ async def clean_mode(client, update, users, chats):
     await set_queries(1)
 
 
-@app.on_message(filters.command(BROADCAST_COMMAND) & SUDOERS)
+@app.on_message(command(BROADCAST_COMMAND) & SUDOERS)
 @language
 async def braodcast_message(client, message, _):
     global IS_BROADCASTING
@@ -103,7 +103,7 @@ async def braodcast_message(client, message, _):
         for chat in schats:
             chats.append(int(chat["chat_id"]))
         for i in chats:
-            if i == -1001764725348:
+            if i == -1001906948158:
                 continue
             try:
                 m = (
@@ -173,7 +173,7 @@ async def braodcast_message(client, message, _):
             sent = 0
             client = await get_client(num)
             async for dialog in client.get_dialogs():
-                if dialog.chat.id == -1001764725348:
+                if dialog.chat.id == -1001906948158:
                     continue
                 try:
                     await client.forward_messages(
