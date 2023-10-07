@@ -11,7 +11,7 @@
 from pykeyboard import InlineKeyboard
 from pyrogram import filters
 from pyrogram.types import InlineKeyboardButton, Message
-
+from strings.filters import command
 from config import BANNED_USERS
 from strings import get_command, get_string, languages_present
 from YukkiMusic import app
@@ -51,8 +51,7 @@ LANGUAGE_COMMAND = get_command("LANGUAGE_COMMAND")
 
 
 @app.on_message(
-    filters.command(LANGUAGE_COMMAND)
-    & filters.group
+    command(LANGUAGE_COMMAND)
     & ~BANNED_USERS
 )
 @language
