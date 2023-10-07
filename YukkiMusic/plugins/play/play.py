@@ -16,7 +16,7 @@ from pyrogram import filters
 from pyrogram.types import (InlineKeyboardMarkup, InputMediaPhoto,
                             Message)
 from pytgcalls.exceptions import NoActiveGroupCall
-
+from strings.filters import command
 import config
 from config import BANNED_USERS, lyrical
 from strings import get_command
@@ -41,7 +41,7 @@ PLAY_COMMAND = get_command("PLAY_COMMAND")
 
 
 @app.on_message(
-    filters.command(PLAY_COMMAND)
+    command(PLAY_COMMAND)
     & ~filters.private
     & ~BANNED_USERS
 )
