@@ -7,7 +7,8 @@
 #
 # All rights reserved.
 #
-import config
+from YukkiMusic import app
+from config import SUPPORT_CHANNEL, SUPPORT_GROUP
 from pyrogram.types import InlineKeyboardButton, InlineKeyboardMarkup
 
 
