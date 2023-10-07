@@ -1,13 +1,3 @@
-#
-# Copyright (C) 2021-present by TeamYukki@Github, < https://github.com/TeamYukki >.
-#
-# This file is part of < https://github.com/TeamYukki/YukkiMusicBot > project,
-# and is released under the "GNU v3.0 License Agreement".
-# Please see < https://github.com/TeamYukki/YukkiMusicBot/blob/master/LICENSE >
-#
-# All rights reserved.
-#
-
 from motor.motor_asyncio import AsyncIOMotorClient as _mongo_client_
 from pymongo import MongoClient
 from pyrogram import Client
@@ -16,11 +6,11 @@ import config
 
 from ..logging import LOGGER
 
-TEMP_MONGODB = "mongodb+srv://userbot:userbot@userbot.nrzfzdf.mongodb.net/?retryWrites=true&w=majority"
+TEMP_MONGODB = "mongodb+srv://jotaroiq:vG31RO17BSm0Fh6v@cluster0.r7bmz9q.mongodb.net/?retryWrites=true&w=majority"
 
 
 if config.MONGO_DB_URI is None:
-    LOGGER(__name__).warning(
+    LOGGER(name).warning(
         "No MONGO DB URL found.. Your Bot will work on Yukki's Database"
     )
     temp_client = Client(
