@@ -17,19 +17,19 @@ async def play_logs(message, streamtype):
         if message.chat.username:
             chatusername = f"@{message.chat.username}"
         else:
-            chatusername = "Private Group"
+            chatusername = "گرووپی تایبەت"
         logger_text = f"""
-**YUKKI PLAY LOG**
+**ئاماری پەخشکردن: [𝙄𝙌 𝙈𝙐𝙎𝙄𝘾 ♥️•](t.me/mgimt)**
 
-**Chat:** {message.chat.title} [`{message.chat.id}`]
-**User:** {message.from_user.mention}
-**Username:** @{message.from_user.username}
-**User ID:** `{message.from_user.id}`
-**Chat Link:** {chatusername}
+**وی گرووپ:** {message.chat.title} [`{message.chat.id}`]
+**ناوی:** {message.from_user.mention}
+**یوزەری:** @{message.from_user.username}
+**ئایدی بەکار‌هێنەر:** `{message.from_user.id}`
+**یوزەری گرووپ:** {chatusername}
 
-**Query:** {message.text}
+**ڕیزکراو:** {message.text}
 
-**StreamType:** {streamtype}"""
+**جۆری پەخشکردن:** {streamtype}"""
         if message.chat.id != LOG_GROUP_ID:
             try:
                 await app.send_message(
