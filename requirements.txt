@@ -13,7 +13,7 @@ numpy
 pillow
 psutil
 pykeyboard
-py-tgcalls==1.0.0.dev6
+py-tgcalls==1.0.0.rc1
 pyrogram
 python-dotenv
 pyyaml
@@ -23,5 +23,5 @@ spotipy
 tgcrypto
 youtube-search
 youtube-search-python
-yt-dlp
+yt-dlp==2023.07.06
 telegraph
