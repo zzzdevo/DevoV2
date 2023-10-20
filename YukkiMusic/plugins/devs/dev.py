@@ -10,7 +10,6 @@
 
 # This aeval and sh module is taken from < https://github.com/TheHamkerCat/WilliamButcherBot >
 # Credit goes to TheHamkerCat.
-#
 
 import os
 import re
