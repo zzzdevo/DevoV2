@@ -1,5 +1,5 @@
 #
-# Copyright (C) 2021-2022 by TeamYukki@Github, < https://github.com/TeamYukki >.
+# Copyright (C) 2021-present by TeamYukki@Github, < https://github.com/TeamYukki >.
 #
 # This file is part of < https://github.com/TeamYukki/YukkiMusicBot > project,
 # and is released under the "GNU v3.0 License Agreement".
@@ -73,6 +73,20 @@ def PlayWrapper(command):
                     caption=_["playlist_1"],
                     reply_markup=InlineKeyboardMarkup(buttons),
                 )
+        if message.sender_chat:
+            upl = InlineKeyboardMarkup(
+                [
+                    [
+                        InlineKeyboardButton(
+                            text="How to Fix this? ",
+                            callback_data="AnonymousAdmin",
+                        ),
+                    ]
+                ]
+            )
+            return await message.reply_text(
+                _["general_4"], reply_markup=upl
+            )
         if message.command[0][0] == "c":
             chat_id = await get_cmode(message.chat.id)
             if chat_id is None:
@@ -95,7 +109,7 @@ def PlayWrapper(command):
                 else:
                     if message.from_user.id not in admins:
                         return await message.reply_text(_["play_4"])
-        if message.command[0][0] == "v" or message.command[0][0] == "ڤ":
+        if message.command[0][0] == "v":
             video = True
         else:
             if "-v" in message.text:
