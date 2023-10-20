@@ -6,7 +6,7 @@
 # Please see < https://github.com/TeamYukki/YukkiMusicBot/blob/master/LICENSE >
 #
 # All rights reserved.
-#
+
 
 from strings import get_string
 from YukkiMusic.misc import SUDOERS
