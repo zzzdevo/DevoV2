@@ -1,6 +1,5 @@
 aiofiles
 aiohttp
-asyncio
 dnspython
 ffmpeg-python
 gitpython
@@ -13,8 +12,8 @@ numpy
 pillow
 psutil
 pykeyboard
-py-tgcalls==1.0.0.rc1
-pyrogram
+py-tgcalls
+git+https://github.com/PyrogramMod/PyrogramMod@main
 python-dotenv
 pyyaml
 requests
@@ -23,5 +22,5 @@ spotipy
 tgcrypto
 youtube-search
 youtube-search-python
-yt-dlp==2023.07.06
+yt-dlp
 telegraph
