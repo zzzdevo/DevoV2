@@ -6,22 +6,24 @@
 # Please see < https://github.com/TeamYukki/YukkiMusicBot/blob/master/LICENSE >
 #
 # All rights reserved.
+#
 
-from pyrogram.enums import ChatType
+from pyrogram.enums import ChatType, ChatMemberStatus
 from pyrogram.types import InlineKeyboardButton, InlineKeyboardMarkup
-
 from config import adminlist
 from strings import get_string
 from YukkiMusic import app
 from YukkiMusic.misc import SUDOERS
-from YukkiMusic.utils.database import (get_authuser_names, get_cmode,
-                                       get_lang, is_active_chat,
-                                       is_commanddelete_on,
-                                       is_maintenance,
-                                       is_nonadmin_chat)
-
+from YukkiMusic.utils.database import (
+    get_authuser_names, 
+    get_cmode, 
+    get_lang, 
+    is_active_chat, 
+    is_commanddelete_on, 
+    is_maintenance, 
+    is_nonadmin_chat,
+)
 from ..formatters import int_to_alpha
-
 
 def AdminRightsCheck(mystic):
     async def wrapper(client, message):
@@ -72,13 +74,11 @@ def AdminRightsCheck(mystic):
                 admins = adminlist.get(message.chat.id)
                 if not admins:
                     return await message.reply_text(_["admin_18"])
-                else:
-                    if message.from_user.id not in admins:
-                        return await message.reply_text(_["admin_19"])
+                if message.from_user.id not in admins:
+                    return await message.reply_text(_["admin_19"])
         return await mystic(client, message, _, chat_id)
 
     return wrapper
-
 
 def AdminActual(mystic):
     async def wrapper(client, message):
@@ -118,14 +118,13 @@ def AdminActual(mystic):
                         message.chat.id, message.from_user.id
                     )
                 )
-            except:
-                return
-            if not member.privileges.can_manage_video_chats:
-                return await message.reply(_["general_5"])
+                if member.status != ChatMemberStatus.ADMINISTRATOR:
+                    return await message.reply(_["general_5"])
+            except Exception as e:
+                return await message.reply(f"Error: {str(e)}")
         return await mystic(client, message, _)
 
     return wrapper
-
 
 def ActualAdminCB(mystic):
     async def wrapper(client, CallbackQuery):
@@ -153,26 +152,23 @@ def ActualAdminCB(mystic):
                         CallbackQuery.from_user.id,
                     )
                 )
-            except:
-                return await CallbackQuery.answer(
-                    _["general_5"], show_alert=True
-                )
-            if not a.privileges.can_manage_video_chats:
-                if CallbackQuery.from_user.id not in SUDOERS:
-                    token = await int_to_alpha(
-                        CallbackQuery.from_user.id
-                    )
-                    _check = await get_authuser_names(
-                        CallbackQuery.from_user.id
-                    )
-                    if token not in _check:
-                        try:
+                if a.status != ChatMemberStatus.ADMINISTRATOR:
+                    if CallbackQuery.from_user.id not in SUDOERS:
+                        token = await int_to_alpha(
+                            CallbackQuery.from_user.id
+                        )
+                        _check = await get_authuser_names(
+                            CallbackQuery.from_user.id
+                        )
+                        if token not in _check:
                             return await CallbackQuery.answer(
                                 _["general_5"],
                                 show_alert=True,
                             )
-                        except:
-                            return
+                elif a is None:
+                    return await CallbackQuery.answer("You are not a member of this chat.")
+            except Exception as e:
+                return await CallbackQuery.answer(f"Error: {str(e)}")
         return await mystic(client, CallbackQuery, _)
 
     return wrapper
