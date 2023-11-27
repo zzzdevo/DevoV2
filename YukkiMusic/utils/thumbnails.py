@@ -26,8 +26,7 @@ def changeImageSize(maxWidth, maxHeight, image):
     heightRatio = maxHeight / image.size[1]
     newWidth = int(widthRatio * image.size[0])
     newHeight = int(heightRatio * image.size[1])
-    newImage = image.resize((newWidth, newHeight))
-    return newImage
+    return image.resize((newWidth, newHeight))
 
 
 async def gen_thumb(videoid):
@@ -91,11 +90,11 @@ async def gen_thumb(videoid):
         para = textwrap.wrap(title, width=32)
         j = 0
         draw.text(
-            (5, 7), f"ALINA", fill="white", font=name_font
+            (5, 5), "IQ MUSIC", fill="white", font=name_font
         )
         draw.text(
             (600, 150),
-            "ALINA PLAYING",
+            "NOW PLAYING",
             fill="white",
             stroke_width=2,
             stroke_fill="white",
